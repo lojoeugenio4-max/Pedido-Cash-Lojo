@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { ShoppingCart, Trash2, Send, Search } from "lucide-react";
 
-const WHATSAPP_NUMBER = "34670619113";
+const WHATSAPP_NUMBER = "34670716744";
 
 // Pega aquí tu mismo array completo de departments
 const departments = [
