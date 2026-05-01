@@ -392,10 +392,10 @@ export default function App() {
     return products
       .map((product) => ({
         ...product,
-        unidades: Number(quantities[product.id]?.unidades || 0),
-        cajas: Number(quantities[product.id]?.cajas || 0)
+        cajas: Number(quantities[product.id]?.cajas || 0),
+        unidades: Number(quantities[product.id]?.unidades || 0)
       }))
-      .filter((product) => product.unidades > 0 || product.cajas > 0);
+      .filter((product) => product.cajas > 0 || product.unidades > 0);
   }, [quantities]);
 
   const updateQuantity = (productId, field, value) => {
@@ -432,8 +432,8 @@ export default function App() {
 
         selectedDepartmentItems.forEach((item) => {
           const parts = [];
-          if (item.unidades > 0) parts.push(`${item.unidades} unidades`);
           if (item.cajas > 0) parts.push(`${item.cajas} cajas`);
+          if (item.unidades > 0) parts.push(`${item.unidades} unidades`);
           lines.push(`${item.name}: ${parts.join(" / ")}`);
         });
 
@@ -516,9 +516,9 @@ export default function App() {
                 <div key={productId} style={styles.row}>
                   <input
                     inputMode="numeric"
-                    value={quantities[productId]?.unidades || ""}
+                    value={quantities[productId]?.cajas || ""}
                     onChange={(event) =>
-                      updateQuantity(productId, "unidades", event.target.value)
+                      updateQuantity(productId, "cajas", event.target.value)
                     }
                     placeholder="0"
                     style={styles.qtyInput}
@@ -526,9 +526,9 @@ export default function App() {
 
                   <input
                     inputMode="numeric"
-                    value={quantities[productId]?.cajas || ""}
+                    value={quantities[productId]?.unidades || ""}
                     onChange={(event) =>
-                      updateQuantity(productId, "cajas", event.target.value)
+                      updateQuantity(productId, "unidades", event.target.value)
                     }
                     placeholder="0"
                     style={styles.qtyInput}
