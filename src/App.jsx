@@ -504,8 +504,8 @@ export default function App() {
             </div>
 
             <div style={styles.gridHeader}>
-              <div>Unid.</div>
               <div>Cajas</div>
+              <div>Unid.</div>
               <div style={{ textAlign: "left" }}>Artículo</div>
             </div>
 
