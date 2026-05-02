@@ -362,13 +362,33 @@ const departments = [
   },
 ];
 
-const products = departments.flatMap((department) =>
+const hiddenProducts = [
+  // Aquí puedes añadir artículos secundarios que NO se ven en el listado principal.
+  // Solo aparecerán cuando el cliente los busque en el buscador.
+  "PIZZA SALSA MEXICANA",
+  "ENCHILADA CASERA",
+  "TORTILLA DE PATATAS SIN CEBOLLA",
+  "TORTILLA DE PATATAS CON CEBOLLA",
+  
+];
+
+const visibleProducts = departments.flatMap((department) =>
   department.products.map((name) => ({
     id: `${department.name}-${name}`,
     name,
     department: department.name,
+    hidden: false,
   }))
 );
+
+const hiddenProductsFormatted = hiddenProducts.map((name) => ({
+  id: `OCULTO-${name}`,
+  name,
+  department: "ARTÍCULOS BUSCADOS",
+  hidden: true,
+}));
+
+const products = [...visibleProducts, ...hiddenProductsFormatted];
 
 export default function App() {
   useEffect(() => {
@@ -392,14 +412,33 @@ export default function App() {
   const [search, setSearch] = useState("");
 
   const filteredDepartments = useMemo(() => {
-    return departments
+    const cleanSearch = search.trim().toLowerCase();
+
+    const visibleDepartments = departments
       .map((department) => ({
         ...department,
         products: department.products.filter((product) =>
-          product.toLowerCase().includes(search.toLowerCase())
+          product.toLowerCase().includes(cleanSearch)
         ),
       }))
       .filter((department) => department.products.length > 0);
+
+    if (!cleanSearch) {
+      return visibleDepartments;
+    }
+
+    const hiddenMatches = hiddenProducts.filter((product) =>
+      product.toLowerCase().includes(cleanSearch)
+    );
+
+    if (hiddenMatches.length > 0) {
+      visibleDepartments.push({
+        name: "ARTÍCULOS BUSCADOS",
+        products: hiddenMatches,
+      });
+    }
+
+    return visibleDepartments;
   }, [search]);
 
   const selectedItems = useMemo(() => {
