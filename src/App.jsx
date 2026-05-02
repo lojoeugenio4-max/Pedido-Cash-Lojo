@@ -448,6 +448,7 @@ export default function App() {
       if (item.unidades > 0) parts.push(`*${item.unidades} unidades*`);
 
       lines.push(`- ${item.name}: ${parts.join(" / ")}`);
+      lines.push("");
     });
 
     lines.push("");
