@@ -365,9 +365,9 @@ const departments = [
 const hiddenProducts = [
   // Aquí puedes añadir artículos secundarios que NO se ven en el listado principal.
   // Solo aparecerán cuando el cliente los busque en el buscador.
-  // Ejemplo:
-  // "COCA COLA ZERO BOTELLA 500ML",
-  // "PATATAS FRITAS 1KG",
+  "ENCHILADA CASERA 400GR",
+  "TORTILLA DE PATATAS SIN CEBOLLA 700G",
+  "TORTILLA DE PATATAS CON CEBOLLA 700G",
 ];
 
 const visibleProducts = departments.flatMap((department) =>
