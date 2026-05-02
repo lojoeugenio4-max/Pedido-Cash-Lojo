@@ -583,7 +583,7 @@ const styles = {
     fontFamily: "Arial, sans-serif",
   },
   container: {
-    maxWidth: "900px",
+    maxWidth: "1100px",
     margin: "0 auto",
   },
   header: {
@@ -685,12 +685,12 @@ const styles = {
   },
   sectionTitle: {
     margin: 0,
-    fontSize: "17px",
+    fontSize: "18px",
     textTransform: "uppercase",
   },
   gridHeader: {
     display: "grid",
-    gridTemplateColumns: "72px 72px 1fr",
+    gridTemplateColumns: "80px 80px 1fr",
     gap: "8px",
     background: "#e2e8f0",
     padding: "10px",
@@ -700,7 +700,7 @@ const styles = {
   },
   row: {
     display: "grid",
-    gridTemplateColumns: "72px 72px 1fr",
+    gridTemplateColumns: "80px 80px 1fr",
     gap: "8px",
     alignItems: "center",
     padding: "9px 10px",
@@ -713,12 +713,12 @@ const styles = {
     border: "1px solid #cbd5e1",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: "14px",
+    fontSize: "16px",
     boxSizing: "border-box",
   },
   productName: {
     margin: 0,
-    fontSize: "13px",
+    fontSize: "15px",
     fontWeight: "600",
   },
   textarea: {
