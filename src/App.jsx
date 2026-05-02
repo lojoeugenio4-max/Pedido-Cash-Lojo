@@ -1472,12 +1472,15 @@ export default function App() {
     const visibleDepartments = departments
       .map((department) => ({
         ...department,
-        products: department.products.filter((product) =>
-          product.toLowerCase().includes(cleanSearch)
-        ),
+        products: cleanSearch
+          ? department.products.filter((product) =>
+              product.toLowerCase().includes(cleanSearch)
+            )
+          : department.products,
       }))
       .filter((department) => department.products.length > 0);
 
+    // Si el buscador está vacío, NO mostramos ningún artículo oculto.
     if (!cleanSearch) {
       return visibleDepartments;
     }
