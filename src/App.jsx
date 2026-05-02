@@ -470,6 +470,7 @@ export default function App() {
     setQuantities({});
     setCustomerName("");
     setNotes("");
+    setSearch("");
   };
 
   const createWhatsAppMessage = () => {
@@ -508,6 +509,8 @@ export default function App() {
       `https://wa.me/${WHATSAPP_NUMBER}?text=${createWhatsAppMessage()}`,
       "_blank"
     );
+
+    clearOrder();
   };
 
   return (
