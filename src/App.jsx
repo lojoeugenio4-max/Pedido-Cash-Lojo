@@ -408,6 +408,12 @@ export default function App() {
     }));
   };
 
+  const closeKeyboardOnEnter = (event) => {
+    if (event.key === "Enter") {
+      event.currentTarget.blur();
+    }
+  };
+
   const clearOrder = () => {
     setQuantities({});
     setCustomerName("");
@@ -506,20 +512,24 @@ export default function App() {
                 <div key={productId} style={styles.row}>
                   <input
                     inputMode="numeric"
+                    enterKeyHint="done"
                     value={quantities[productId]?.cajas || ""}
                     onChange={(event) =>
                       updateQuantity(productId, "cajas", event.target.value)
                     }
+                    onKeyDown={closeKeyboardOnEnter}
                     placeholder="0"
                     style={styles.qtyInput}
                   />
 
                   <input
                     inputMode="numeric"
+                    enterKeyHint="done"
                     value={quantities[productId]?.unidades || ""}
                     onChange={(event) =>
                       updateQuantity(productId, "unidades", event.target.value)
                     }
+                    onKeyDown={closeKeyboardOnEnter}
                     placeholder="0"
                     style={styles.qtyInput}
                   />
