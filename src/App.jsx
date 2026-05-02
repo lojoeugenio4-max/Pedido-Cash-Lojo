@@ -1436,7 +1436,9 @@ const visibleProducts = departments.flatMap((department) =>
   }))
 );
 
-const hiddenProductsFormatted = hiddenProducts.map((name) => ({
+const hiddenProductsUnique = [...new Set(hiddenProducts)];
+
+const hiddenProductsFormatted = hiddenProductsUnique.map((name) => ({
   id: `ARTÍCULOS BUSCADOS-${name}`,
   name,
   department: "ARTÍCULOS BUSCADOS",
@@ -1474,16 +1476,13 @@ export default function App() {
       .trim();
 
   const productMatchesSearch = (product, searchText) => {
-    const productWords = normalizeText(product)
-      .split(/[^a-z0-9ñ]+/i)
-      .filter(Boolean);
-
+    const normalizedProduct = normalizeText(product);
     const searchWords = normalizeText(searchText)
       .split(/[^a-z0-9ñ]+/i)
       .filter(Boolean);
 
     return searchWords.every((searchWord) =>
-      productWords.some((productWord) => productWord.startsWith(searchWord))
+      normalizedProduct.includes(searchWord)
     );
   };
 
@@ -1510,7 +1509,7 @@ export default function App() {
       visibleProducts.map((product) => normalizeText(product.name))
     );
 
-    const hiddenMatches = hiddenProducts.filter((product) => {
+    const hiddenMatches = hiddenProductsUnique.filter((product) => {
       const normalizedProduct = normalizeText(product);
 
       return (
