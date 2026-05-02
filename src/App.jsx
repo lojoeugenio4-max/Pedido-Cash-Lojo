@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ShoppingCart, Trash2, Send, Search } from "lucide-react";
 
 const WHATSAPP_NUMBER = "34670619113";
@@ -371,6 +371,21 @@ const products = departments.flatMap((department) =>
 );
 
 export default function App() {
+  useEffect(() => {
+    let viewport = document.querySelector("meta[name=viewport]");
+
+    if (!viewport) {
+      viewport = document.createElement("meta");
+      viewport.setAttribute("name", "viewport");
+      document.head.appendChild(viewport);
+    }
+
+    viewport.setAttribute(
+      "content",
+      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    );
+  }, []);
+
   const [quantities, setQuantities] = useState({});
   const [customerName, setCustomerName] = useState("");
   const [notes, setNotes] = useState("");
@@ -408,26 +423,9 @@ export default function App() {
     }));
   };
 
-  const resetIphoneZoom = () => {
-    const viewport = document.querySelector("meta[name=viewport]");
-
-    if (viewport) {
-      viewport.setAttribute(
-        "content",
-        "width=device-width, initial-scale=1, maximum-scale=1"
-      );
-
-      setTimeout(() => {
-        viewport.setAttribute("content", "width=device-width, initial-scale=1");
-        window.scrollTo(window.scrollX, window.scrollY);
-      }, 300);
-    }
-  };
-
   const closeKeyboardOnEnter = (event) => {
     if (event.key === "Enter") {
       event.currentTarget.blur();
-      resetIphoneZoom();
     }
   };
 
@@ -494,7 +492,6 @@ export default function App() {
           <input
             value={customerName}
             onChange={(event) => setCustomerName(event.target.value)}
-            onBlur={resetIphoneZoom}
             placeholder="Opcional"
             style={styles.input}
           />
@@ -506,7 +503,6 @@ export default function App() {
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                onBlur={resetIphoneZoom}
                 placeholder="Buscar..."
                 style={styles.searchInput}
               />
@@ -543,7 +539,6 @@ export default function App() {
                       updateQuantity(productId, "cajas", event.target.value)
                     }
                     onKeyDown={closeKeyboardOnEnter}
-                    onBlur={resetIphoneZoom}
                     placeholder="0"
                     style={styles.qtyInput}
                   />
@@ -556,7 +551,6 @@ export default function App() {
                       updateQuantity(productId, "unidades", event.target.value)
                     }
                     onKeyDown={closeKeyboardOnEnter}
-                    onBlur={resetIphoneZoom}
                     placeholder="0"
                     style={styles.qtyInput}
                   />
@@ -573,7 +567,6 @@ export default function App() {
           <textarea
             value={notes}
             onChange={(event) => setNotes(event.target.value)}
-            onBlur={resetIphoneZoom}
             placeholder="Opcional"
             rows={3}
             style={styles.textarea}
