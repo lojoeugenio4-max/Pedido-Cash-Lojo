@@ -1,9 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { ShoppingCart, Trash2, Send, Search } from "lucide-react";
 
-const WHATSAPP_NUMBER = "34670716744";
+const WHATSAPP_NUMBER = "34670619113";
 
-// Pega aquí tu mismo array completo de departments
 const departments = [
   {
     name: "AGUA",
@@ -367,7 +366,7 @@ const products = departments.flatMap((department) =>
   department.products.map((name) => ({
     id: `${department.name}-${name}`,
     name,
-    department: department.name
+    department: department.name,
   }))
 );
 
@@ -383,7 +382,7 @@ export default function App() {
         ...department,
         products: department.products.filter((product) =>
           product.toLowerCase().includes(search.toLowerCase())
-        )
+        ),
       }))
       .filter((department) => department.products.length > 0);
   }, [search]);
@@ -393,7 +392,7 @@ export default function App() {
       .map((product) => ({
         ...product,
         cajas: Number(quantities[product.id]?.cajas || 0),
-        unidades: Number(quantities[product.id]?.unidades || 0)
+        unidades: Number(quantities[product.id]?.unidades || 0),
       }))
       .filter((product) => product.cajas > 0 || product.unidades > 0);
   }, [quantities]);
@@ -404,8 +403,8 @@ export default function App() {
       ...current,
       [productId]: {
         ...current[productId],
-        [field]: cleanValue
-      }
+        [field]: cleanValue,
+      },
     }));
   };
 
@@ -422,24 +421,15 @@ export default function App() {
       lines.push(`Cliente: ${customerName.trim()}`, "");
     }
 
-    departments.forEach((department) => {
-      const selectedDepartmentItems = selectedItems.filter(
-        (item) => item.department === department.name
-      );
+    selectedItems.forEach((item) => {
+      const parts = [];
+      if (item.cajas > 0) parts.push(`*${item.cajas} cajas*`);
+      if (item.unidades > 0) parts.push(`*${item.unidades} unidades*`);
 
-      if (selectedDepartmentItems.length > 0) {
-        lines.push(`--- ${department.name} ---`);
-
-        selectedDepartmentItems.forEach((item) => {
-          const parts = [];
-          if (item.cajas > 0) parts.push(`${item.cajas} cajas`);
-          if (item.unidades > 0) parts.push(`${item.unidades} unidades`);
-          lines.push(`${item.name}: ${parts.join(" / ")}`);
-        });
-
-        lines.push("");
-      }
+      lines.push(`- ${item.name}: ${parts.join(" / ")}`);
     });
+
+    lines.push("");
 
     if (notes.trim()) {
       lines.push(`Observaciones: ${notes.trim()}`, "");
@@ -574,11 +564,11 @@ const styles = {
     background: "#f1f5f9",
     padding: "16px",
     color: "#0f172a",
-    fontFamily: "Arial, sans-serif"
+    fontFamily: "Arial, sans-serif",
   },
   container: {
     maxWidth: "900px",
-    margin: "0 auto"
+    margin: "0 auto",
   },
   header: {
     background: "white",
@@ -588,23 +578,23 @@ const styles = {
     gap: "14px",
     alignItems: "center",
     marginBottom: "16px",
-    boxShadow: "0 1px 6px rgba(0,0,0,0.08)"
+    boxShadow: "0 1px 6px rgba(0,0,0,0.08)",
   },
   iconBox: {
     background: "#0f172a",
     color: "white",
     borderRadius: "16px",
     padding: "12px",
-    display: "flex"
+    display: "flex",
   },
   title: {
     margin: 0,
-    fontSize: "24px"
+    fontSize: "24px",
   },
   subtitle: {
     margin: "6px 0 0",
     color: "#475569",
-    fontSize: "14px"
+    fontSize: "14px",
   },
   cardSticky: {
     position: "sticky",
@@ -614,63 +604,63 @@ const styles = {
     padding: "16px",
     borderRadius: "18px",
     marginBottom: "18px",
-    boxShadow: "0 1px 6px rgba(0,0,0,0.08)"
+    boxShadow: "0 1px 6px rgba(0,0,0,0.08)",
   },
   card: {
     background: "white",
     padding: "18px",
     borderRadius: "18px",
     marginTop: "18px",
-    boxShadow: "0 1px 6px rgba(0,0,0,0.08)"
+    boxShadow: "0 1px 6px rgba(0,0,0,0.08)",
   },
   label: {
     display: "block",
     fontWeight: "bold",
-    fontSize: "14px",
+    fontSize: "13px",
     marginBottom: "6px",
-    marginTop: "8px"
+    marginTop: "8px",
   },
   input: {
     width: "100%",
-    padding: "12px",
+    padding: "11px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
-    fontSize: "16px",
-    boxSizing: "border-box"
+    fontSize: "15px",
+    boxSizing: "border-box",
   },
   searchBox: {
-    position: "relative"
+    position: "relative",
   },
   searchIcon: {
     position: "absolute",
     left: "12px",
-    top: "12px",
-    color: "#64748b"
+    top: "11px",
+    color: "#64748b",
   },
   searchInput: {
     width: "100%",
-    padding: "12px 12px 12px 40px",
+    padding: "11px 12px 11px 40px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
-    fontSize: "16px",
-    boxSizing: "border-box"
+    fontSize: "15px",
+    boxSizing: "border-box",
   },
   section: {
     background: "white",
     borderRadius: "18px",
     overflow: "hidden",
     marginBottom: "18px",
-    boxShadow: "0 1px 6px rgba(0,0,0,0.08)"
+    boxShadow: "0 1px 6px rgba(0,0,0,0.08)",
   },
   sectionHeader: {
     background: "#0f172a",
     color: "white",
-    padding: "12px 16px"
+    padding: "12px 16px",
   },
   sectionTitle: {
     margin: 0,
-    fontSize: "18px",
-    textTransform: "uppercase"
+    fontSize: "17px",
+    textTransform: "uppercase",
   },
   gridHeader: {
     display: "grid",
@@ -680,44 +670,45 @@ const styles = {
     padding: "10px",
     fontSize: "12px",
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
   },
   row: {
     display: "grid",
     gridTemplateColumns: "72px 72px 1fr",
     gap: "8px",
     alignItems: "center",
-    padding: "10px",
-    borderTop: "1px solid #e2e8f0"
+    padding: "9px 10px",
+    borderTop: "1px solid #e2e8f0",
   },
   qtyInput: {
     width: "100%",
-    padding: "10px 4px",
+    padding: "8px 4px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: "16px",
-    boxSizing: "border-box"
+    fontSize: "14px",
+    boxSizing: "border-box",
   },
   productName: {
     margin: 0,
-    fontSize: "15px",
-    fontWeight: "600"
+    fontSize: "13px",
+    fontWeight: "600",
   },
   textarea: {
     width: "100%",
-    padding: "12px",
+    padding: "11px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
-    fontSize: "16px",
-    boxSizing: "border-box"
+    fontSize: "15px",
+    boxSizing: "border-box",
   },
   summary: {
     background: "#e2e8f0",
     padding: "12px",
     borderRadius: "12px",
-    margin: "14px 0"
+    margin: "14px 0",
+    fontSize: "14px",
   },
   primaryButton: {
     width: "100%",
@@ -726,13 +717,13 @@ const styles = {
     borderRadius: "12px",
     background: "#0f172a",
     color: "white",
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "bold",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: "8px",
-    marginBottom: "10px"
+    marginBottom: "10px",
   },
   secondaryButton: {
     width: "100%",
@@ -741,11 +732,11 @@ const styles = {
     borderRadius: "12px",
     background: "white",
     color: "#0f172a",
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "bold",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "8px"
-  }
+    gap: "8px",
+  },
 };
