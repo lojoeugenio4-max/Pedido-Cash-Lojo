@@ -1470,14 +1470,21 @@ export default function App() {
     text
       .toLowerCase()
       .normalize("NFD")
-      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[\u0300-\u036f]/g, "")
       .trim();
 
   const productMatchesSearch = (product, searchText) => {
-    const normalizedProduct = normalizeText(product);
-    const words = normalizeText(searchText).split(/\\s+/).filter(Boolean);
+    const productWords = normalizeText(product)
+      .split(/[^a-z0-9ñ]+/i)
+      .filter(Boolean);
 
-    return words.every((word) => normalizedProduct.includes(word));
+    const searchWords = normalizeText(searchText)
+      .split(/[^a-z0-9ñ]+/i)
+      .filter(Boolean);
+
+    return searchWords.every((searchWord) =>
+      productWords.some((productWord) => productWord.startsWith(searchWord))
+    );
   };
 
   const filteredDepartments = useMemo(() => {
