@@ -408,9 +408,26 @@ export default function App() {
     }));
   };
 
+  const resetIphoneZoom = () => {
+    const viewport = document.querySelector("meta[name=viewport]");
+
+    if (viewport) {
+      viewport.setAttribute(
+        "content",
+        "width=device-width, initial-scale=1, maximum-scale=1"
+      );
+
+      setTimeout(() => {
+        viewport.setAttribute("content", "width=device-width, initial-scale=1");
+        window.scrollTo(window.scrollX, window.scrollY);
+      }, 300);
+    }
+  };
+
   const closeKeyboardOnEnter = (event) => {
     if (event.key === "Enter") {
       event.currentTarget.blur();
+      resetIphoneZoom();
     }
   };
 
@@ -477,6 +494,7 @@ export default function App() {
           <input
             value={customerName}
             onChange={(event) => setCustomerName(event.target.value)}
+            onBlur={resetIphoneZoom}
             placeholder="Opcional"
             style={styles.input}
           />
@@ -488,6 +506,7 @@ export default function App() {
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
+                onBlur={resetIphoneZoom}
                 placeholder="Buscar..."
                 style={styles.searchInput}
               />
@@ -524,6 +543,7 @@ export default function App() {
                       updateQuantity(productId, "cajas", event.target.value)
                     }
                     onKeyDown={closeKeyboardOnEnter}
+                    onBlur={resetIphoneZoom}
                     placeholder="0"
                     style={styles.qtyInput}
                   />
@@ -536,6 +556,7 @@ export default function App() {
                       updateQuantity(productId, "unidades", event.target.value)
                     }
                     onKeyDown={closeKeyboardOnEnter}
+                    onBlur={resetIphoneZoom}
                     placeholder="0"
                     style={styles.qtyInput}
                   />
@@ -552,6 +573,7 @@ export default function App() {
           <textarea
             value={notes}
             onChange={(event) => setNotes(event.target.value)}
+            onBlur={resetIphoneZoom}
             placeholder="Opcional"
             rows={3}
             style={styles.textarea}
@@ -641,7 +663,7 @@ const styles = {
     padding: "11px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
-    fontSize: "15px",
+    fontSize: "16px",
     boxSizing: "border-box",
   },
   searchBox: {
@@ -668,7 +690,7 @@ const styles = {
     padding: "11px 12px 11px 40px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
-    fontSize: "15px",
+    fontSize: "16px",
     boxSizing: "border-box",
   },
   section: {
@@ -718,7 +740,7 @@ const styles = {
   },
   productName: {
     margin: 0,
-    fontSize: "15px",
+    fontSize: "16px",
     fontWeight: "600",
   },
   textarea: {
@@ -726,7 +748,7 @@ const styles = {
     padding: "11px",
     borderRadius: "12px",
     border: "1px solid #cbd5e1",
-    fontSize: "15px",
+    fontSize: "16px",
     boxSizing: "border-box",
   },
   summary: {
@@ -743,7 +765,7 @@ const styles = {
     borderRadius: "12px",
     background: "#0f172a",
     color: "white",
-    fontSize: "15px",
+    fontSize: "16px",
     fontWeight: "bold",
     display: "flex",
     alignItems: "center",
@@ -773,7 +795,7 @@ const styles = {
     borderRadius: "12px",
     background: "white",
     color: "#0f172a",
-    fontSize: "15px",
+    fontSize: "16px",
     fontWeight: "bold",
     display: "flex",
     alignItems: "center",
