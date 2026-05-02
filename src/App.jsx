@@ -482,14 +482,20 @@ export default function App() {
           />
 
           <label style={styles.label}>Buscar artículo</label>
-          <div style={styles.searchBox}>
-            <Search size={20} style={styles.searchIcon} />
-            <input
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Escribe para buscar..."
-              style={styles.searchInput}
-            />
+          <div style={styles.searchAndSendRow}>
+            <div style={styles.searchBoxCompact}>
+              <Search size={20} style={styles.searchIcon} />
+              <input
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Buscar..."
+                style={styles.searchInput}
+              />
+            </div>
+
+            <button onClick={sendOrder} style={styles.stickyWhatsappButton}>
+              <Send size={18} /> WhatsApp
+            </button>
           </div>
         </div>
 
@@ -641,6 +647,16 @@ const styles = {
   searchBox: {
     position: "relative",
   },
+  searchAndSendRow: {
+    display: "grid",
+    gridTemplateColumns: "1fr 118px",
+    gap: "8px",
+    alignItems: "center",
+  },
+  searchBoxCompact: {
+    position: "relative",
+    minWidth: 0,
+  },
   searchIcon: {
     position: "absolute",
     left: "12px",
@@ -734,6 +750,21 @@ const styles = {
     justifyContent: "center",
     gap: "8px",
     marginBottom: "10px",
+  },
+  stickyWhatsappButton: {
+    width: "100%",
+    height: "44px",
+    border: "none",
+    borderRadius: "12px",
+    background: "#22c55e",
+    color: "white",
+    fontSize: "13px",
+    fontWeight: "bold",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "6px",
+    whiteSpace: "nowrap",
   },
   secondaryButton: {
     width: "100%",
