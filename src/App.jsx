@@ -1466,33 +1466,48 @@ export default function App() {
   const [notes, setNotes] = useState("");
   const [search, setSearch] = useState("");
 
+  const normalizeText = (text) =>
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\\u0300-\\u036f]/g, "")
+      .trim();
+
+  const productMatchesSearch = (product, searchText) => {
+    const normalizedProduct = normalizeText(product);
+    const words = normalizeText(searchText).split(/\\s+/).filter(Boolean);
+
+    return words.every((word) => normalizedProduct.includes(word));
+  };
+
   const filteredDepartments = useMemo(() => {
-    const cleanSearch = search.trim().toLowerCase();
+    const cleanSearch = search.trim();
 
     const visibleDepartments = departments
       .map((department) => ({
         ...department,
         products: cleanSearch
           ? department.products.filter((product) =>
-              product.toLowerCase().includes(cleanSearch)
+              productMatchesSearch(product, cleanSearch)
             )
           : department.products,
       }))
       .filter((department) => department.products.length > 0);
 
-    // Si el buscador está vacío, NO mostramos ningún artículo oculto.
-    if (!cleanSearch) {
+    // Si el buscador está vacío o tiene solo 1 letra, NO mostramos artículos ocultos.
+    if (cleanSearch.length < 2) {
       return visibleDepartments;
     }
 
     const visibleProductNames = new Set(
-      visibleProducts.map((product) => product.name.toLowerCase())
+      visibleProducts.map((product) => normalizeText(product.name))
     );
 
     const hiddenMatches = hiddenProducts.filter((product) => {
-      const normalizedProduct = product.toLowerCase();
+      const normalizedProduct = normalizeText(product);
+
       return (
-        normalizedProduct.includes(cleanSearch) &&
+        productMatchesSearch(product, cleanSearch) &&
         !visibleProductNames.has(normalizedProduct)
       );
     });
