@@ -365,11 +365,9 @@ const departments = [
 const hiddenProducts = [
   // Aquí puedes añadir artículos secundarios que NO se ven en el listado principal.
   // Solo aparecerán cuando el cliente los busque en el buscador.
-  "PIZZA SALSA MEXICANA",
-  "ENCHILADA CASERA",
-  "TORTILLA DE PATATAS SIN CEBOLLA",
-  "TORTILLA DE PATATAS CON CEBOLLA",
-  
+  // Ejemplo:
+  // "COCA COLA ZERO BOTELLA 500ML",
+  // "PATATAS FRITAS 1KG",
 ];
 
 const visibleProducts = departments.flatMap((department) =>
@@ -382,7 +380,7 @@ const visibleProducts = departments.flatMap((department) =>
 );
 
 const hiddenProductsFormatted = hiddenProducts.map((name) => ({
-  id: `OCULTO-${name}`,
+  id: `ARTÍCULOS BUSCADOS-${name}`,
   name,
   department: "ARTÍCULOS BUSCADOS",
   hidden: true,
