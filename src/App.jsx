@@ -14,7 +14,7 @@ const departments = [
       "AGUA VALTORRE 0.5L PITORRO",
       "AGUA VALTORRE GARRAFA 5L",
       "AGUA SOLAN CABRAS 1.5L",
-      "SOLAN CABRAS 500ML",
+      "AGUA SOLAN CABRAS 500ML",
       "AGUA GOURMET CON GAS 0.5L",
       "AGUA GOURMET CON GAS 1.5L",
     ],
