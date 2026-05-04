@@ -362,9 +362,7 @@ const departments = [
   },
 ];
 
-// Pega aquí todos los artículos del PDF. El código elimina automáticamente los repetidos con departments.
-
- const hiddenProducts = [
+const hiddenProductsRaw = [
   "( COMPOSTABLE ) 30 X 40 MERCADO ROLLO ANONIMA 1 KG",
   "1/2 LONCHA JAMON CUR.NAVIDUL 50GR",
   "15 x 30 BOLSA TRAMPARENTE",
@@ -421,11 +419,8 @@ const departments = [
   "APETINAS KETCHUP 90G",
   "APPEL MELON ENERGETICO POWER KING 25CL",
   "AQUAPLUS LIMON 1.5 L VALTORRE",
-  "AQUARIUS BLANCO 1.5 L",
-  "AQUARIUS NARANJA LATA 33 CL.",
   "ARENA GATO MIC&FRIENDS PERFUMADA 5K",
   "ARIEL LIQ 28D",
-  "ARROZ BRILLANTE 1 KG",
   "ARROZ BRILLANTE 500 GR",
   "ARROZ BRILLANTE BASMATI 2X125 GR",
   "ARROZ CIGALA 500 GR.",
@@ -447,9 +442,6 @@ const departments = [
   "BANDEJA T89 U (NEGRAS)",
   "BANDERILLA GOURMET PICA.150G",
   "BASTONCILLOS ALGODON COALIMENT 200UDS",
-  "BAT.PULEVA CACAO P-6 200",
-  "BAT.PULEVA FRESA P-6 200",
-  "BAT.PULEVA VAINILLA P-6 200",
   "BATIDO PULEVA CACAO LITRO",
   "BATIDO PULEVA FRESA LITRO",
   "BATIDO PULEVA VAINILLA LITRO",
@@ -475,7 +467,6 @@ const departments = [
   "BOLSA BLANCA 42X53CM 1 KG RECICLADA IMPRESA",
   "BOLSA BLANCA 50x60 GRANDE BLANCA",
   "BOLSA FINAS PANADERIA 30X43",
-  "BOLSA VERDE (OFERTA) 42X53",
   "BOLSAS 10X20 PURUÑUELA",
   "BOLSAS 12X25 PURUÑUELA",
   "BORRACHUELO AZUCAR CARTUJANO ALVEOLO 6U 240G",
@@ -485,7 +476,6 @@ const departments = [
   "BRANDY MAGNO 70 CL.",
   "BROTES DE SOJA GOURMET 180G",
   "BUDIN PROLONGO 150GR",
-  "BURN LATA 500 ML",
   "BUSCALIOS 140 X 12 CORTEZA BARBACOA RISI",
   "CABALLA ACEITE/V UBAGO 90",
   "CABALLA UBAGO TOMATE 90G",
@@ -510,7 +500,6 @@ const departments = [
   "CANELA RAMA LA BARRACA",
   "CASCALES DOÑA PIPA JUVENIL DE 30 UN",
   "CASCALES GRANDE DOÑA PIPA 14 U",
-  "CASERA BLANCA 1.5 L.",
   "CASERA BLANCA LATA",
   "CASERA LIMON 1.5",
   "CASERA NARANJA 1.5",
@@ -520,7 +509,6 @@ const departments = [
   "CERVEZA 50CL CRUZCAMPO",
   "CERVEZA CRUZCAMPO BOTELLIN P24",
   "CERVEZA CRUZCAMPO BOTE . PACK 6",
-  "CERVEZA CRUZCAMPO S/A LATA 33CL",
   "CERVEZA CRUZCAMPO UNIDAD S/A P-6",
   "CERVEZA EMDBRAU LATA OFERTA",
   "CERVEZA ESTRELLA 0.0 LATA",
@@ -531,10 +519,8 @@ const departments = [
   "CHICHARRON DE CADIZ KG",
   "CHOPPED BEEF CAMPOF.L/95GR",
   "CHOPPED CERDO CAMPOF.L/95 GR",
-  "CHOPPED CERDO CAMPOFRIO,KG",
   "CHOPPED PAVO L/95 GR CAMPOF.",
   "CHOPPED PORK LATA 2 KG FAMADESA",
-  "CHOPPED TERNERA CAMPOFRIO,KG",
   "CHORIZO BLANCO 65 GR",
   "CHORIZO CULAR IBERICO 1ª ,KG",
   "CHORIZO EXTRA ESPECIAL VILLAR AL VACIO KG",
@@ -552,10 +538,7 @@ const departments = [
   "CHURRUCA PASARRATOS EJECUTIVE 10UDS",
   "CHURRUCA PASARRATOS SENIOR 20UDS",
   "CLAVO GRANO LA BARRACA BTE CRISTAL",
-  "COCA COLA 2 L.",
   "COCA COLA 2 L. ZERO",
-  "COCA COLA LATA 33 CL",
-  "COCA COLA ZERO LATA 33 CL",
   "COCA COLA ZERO S/CAFEINA 2L",
   "COCA COLA ZERO S/CAFEINA LTA 33CL",
   "COCIDO MADRILEÑO LITORAL 440GR",
@@ -628,9 +611,6 @@ const departments = [
   "FAIRY 480",
   "FAIRY MAXI PODER",
   "FANTA LIMON 2 LITROS",
-  "FANTA LIMON LATA 33 CL",
-  "FANTA NARANJA 2 L",
-  "FANTA NARANJA LATA 33 CL",
   "FIAMBRE CASADEMONT 11 X11 KG-DUCADO-",
   "FIAMBRE DE PALETA COCIDA CAMPOFRIO.KG",
   "FIAMBRE LOMO AL HORNO FAMADESA KG",
@@ -648,7 +628,6 @@ const departments = [
   "FLAN ROYAL 8 RACIONES 186G",
   "FLOTA LIQ 2.69 L 42+10 D A.PLUS BOUQUET",
   "FLOTA PASTILLAS VERDE NORMAL 250 G",
-  "FLOTA VAJILLAS 750 ML",
   "FOIE-GRAS PIARA 75 GR P3",
   "FOIE-GRAS PIARA 800 GR",
   "FOIGRAS APIS 200 GR",
@@ -688,7 +667,6 @@ const departments = [
   "GEL FIJA GIORGI MAX EXT FUERTE 240 N3 NEW",
   "GEL ICEBERG Y MENTA 750ML COALI",
   "GEL NELLY HUMEDO FUERTE 200",
-  "GINEBRA BEEFEATER 70CL",
   "GINEBRA RIVES 0.70",
   "GINEBRA SEAGRAM´S 70CL",
   "GINEBRA TANQUERAY SEVILLA 0.7 L",
@@ -750,13 +728,11 @@ const departments = [
   "MACARRONES GALLO 250 GR",
   "MACARRONES VEGETALES GALLO 250 GR",
   "MACEDONIA VERDURAS ALSUR 660 FCO",
-  "MAGRETA AL AJILLO FAMADESA, KG",
   "MAGRETA IB.FAMADESA KG",
   "MAIZ DULCE GOURMET DULCE 140G P-3",
   "MAIZENA PTE 400 GR",
   "MAIZ GOURMET DULCE 285GR",
   "MANGO 1.40 PINTADO ROJO (BARATO)",
-  "MARGARINA TULIPAN 400G",
   "MAYORDOMO DETER 2 EN 1 CON SUAVI 3L",
   "MAZA DE CERDO HORNEADA,KG",
   "MECHERO CLIPER TRANSPARENTE CAJA",
@@ -811,7 +787,6 @@ const departments = [
   "PAN MOLDE RUSTIK INTEGRAL 450G",
   "PAN MOLDE RUSTIK SESAMO Y LINO 450G",
   "PAN RAYADO PANAERAS 300GR",
-  "PAPEL ALUMINIO IND.",
   "PAPEL FILMS MERCASUR 30 M",
   "PAPEL HORNO 8 METROS COALI",
   "PAPEL OCB 100 UNID",
@@ -840,7 +815,6 @@ const departments = [
   "PECHUGA DE PAVO CAMPOFRIO, KG",
   "PECHUGA PAVO ALMIREZ,KG",
   "PECHUGA PAVO BRASEADA CAMPOFRIO KG",
-  "PECHUGA PAVO CAMPOFRIO 70G",
   "PEDRO XIMENEZ 3 PASAS",
   "PEPINILLOS DELICIAS 360 GR",
   "PEREJIL LA BARRACA BTE PEQUEÑO",
@@ -867,8 +841,6 @@ const departments = [
   "PIZZA SERRANA-CABRA-CEBOLLA CAMP.",
   "POLO KELIA 1SABOR 60 UN",
   "PONCHE CABALLERO 1L",
-  "POWER KING 25CL",
-  "PRINGLES ORIGINAL 70 GR",
   "PRINGLES SOUR CREAM CEBOLLA 70G",
   "PROTOS CRIANZA 201",
   "P.TRAN (80004) 4 8X200",
@@ -894,15 +866,12 @@ const departments = [
   "QUITAMANCHAS ESPECIAL ROPA PULVERIZADOR KIRIKO",
   "RADLER CRUZCAMPO LIMON LATA",
   "RAMON BILBAO CRIANZA 2013 75CL",
-  "REBUJINAS SEVILLANAS 120G",
   "RECAM MOPA PLA ATRAPAPOLVO 20 UN DESECH",
   "RECOGEDOR C/MANGO",
   "REFRESCO PINK FISH 2 L. COLA",
   "REFRESCO PINK FISH 2L LIMON",
   "REGAÑA ARTESANA 200GR ALABARDERO",
   "REMOLACHA CONSEMUR RALLADA TARRO S/370",
-  "REVOLTOSA COLA 2 L",
-  "REVOLTOSA LIMON 2 L",
   "REVUELTO CARTUJANO 120G 1€",
   "RIOJA T BERONIA CRIANZA 3/4",
   "RON AREHUCAS ORO 0.70 L",
@@ -910,7 +879,6 @@ const departments = [
   "RON BARCELO 1 L.",
   "RON BARCELO AÑEJO 0.70",
   "RON BRUGAL AÑEJO 0.70",
-  "RON CACIQUE 70 CL.",
   "RON MIEL DORAMAS 70 CL.",
   "RON NEGRITA 1 L",
   "ROSTOY BIFRUTA MELOCOTON 33CL",
@@ -953,7 +921,6 @@ const departments = [
   "SERVILLETAS 33X33 BLANCA 1C 200U",
   "SERVILLETAS 33X33 BLANCA 2C 100U",
   "SERVILLETAS CELIA 2C 40X40 50 UNIDADES",
-  "SEVEN-UP LATA 33 CL",
   "SOPA G BCA 24 SB AVE C/ARROZ",
   "SOPA G.BLANCA TERNERA-ESTRELLA 24S",
   "SOPA G.BLANCA VERDURAS 24 S",
@@ -1016,17 +983,14 @@ const departments = [
   "VINO B CASTILLO S DIEGO 3/4",
   "VINO BLANCO DON SIMON 1L (11391)",
   "VINO BLANCO ELEGIDO 1L",
-  "VINO BLANCO GRAN DUQUE 1L",
   "VINO BLANCO.VEGAS DEL RIVILLA 2 L",
   "VINO CANASTA CREAM 75 CL",
   "VINO COCINA EL GUISO 0.70 C.",
-  "VINO RIOJA SEÑORES 3/4",
   "VINO SOLERA 1847 3/4",
   "VINO TINTO D.O RIOJA CAMPOVIEJO 70C",
   "VINO TINTO DON SIMON 1L (11389)",
   "VINO TINTO ELEGIDO 1L",
   "VINO TINTO EMILIO MORO 2022 75CL",
-  "VINO TINTO GRAN DUQUE 1L",
   "VINO TINTO PROTOS COSECHA 3/4",
   "VINO TINTO SOLDEPEÑAS 1 L.",
   "VINO T.VEGAS DEL RIVILLA 2 L",
@@ -1050,11 +1014,9 @@ const departments = [
   "WHISKY JACK DANIELS 3/4",
   "WHISKY JACK DANIELS MINIATURA",
   "WHISKY J&B 200 ML ( PETACA )",
-  "WHISKY J&B 70 CL.",
   "WHISKY J.B. MINIATURA",
   "WHISKY JHONNIE WALKER E/ROJA 3/4",
   "WHISKY JHONNIE WALKER E/ROJA MINIATURA",
-  "WHISKY WHITE LABEL 70 CL.",
   "WHISKY WHITE LABEL- LITRO-",
   "WHISKY WHITE LABEL MINIATURA",
   "YOGO ICE 10UDS",
@@ -1071,36 +1033,34 @@ const departments = [
   "ZUMO DON SIMON NARANJA 200 P-6 (3039)",
   "ZUMO D SIMON PIÑA 200 P6 (3574)",
   "ZUMO D.SIMON MELOCOTON P6 200 (3575)",
-  "ZUMO JUVER NARANJA 850 ML",
   "ÑORAS SECAS LA BARRACA",
-
-
 ];
 
-const normalizeProductNameForCompare = (text) =>
+const normalizeForCompare = (text) =>
   text
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9ñ]+/gi, "")
     .trim();
 
-const visibleProductNamesForCompare = new Set(
-  departments.flatMap((department) =>
-    department.products.map((name) => normalizeProductNameForCompare(name))
-  )
-);
+const normalizeText = (text) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
 
-const hiddenProducts = [...new Set(hiddenProductsRaw)]
-  .filter(
-    (name) =>
-      !visibleProductNamesForCompare.has(normalizeProductNameForCompare(name))
-  )
-  .sort((a, b) => a.localeCompare(b, "es"));
+const productMatchesSearch = (product, searchText) => {
+  const normalizedProduct = normalizeText(product);
+  const searchWords = normalizeText(searchText)
+    .split(/[^a-z0-9ñ]+/i)
+    .filter(Boolean);
 
-const hiddenProductsUnique = hiddenProducts;
-
-];
+  return searchWords.every((searchWord) =>
+    normalizedProduct.includes(searchWord)
+  );
+};
 
 const visibleProducts = departments.flatMap((department) =>
   department.products.map((name) => ({
@@ -1110,14 +1070,6 @@ const visibleProducts = departments.flatMap((department) =>
     hidden: false,
   }))
 );
-
-const normalizeForCompare = (text) =>
-  text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9ñ]+/gi, "")
-    .trim();
 
 const visibleProductNamesForCompare = new Set(
   visibleProducts.map((product) => normalizeForCompare(product.name))
@@ -1157,24 +1109,6 @@ export default function App() {
   const [notes, setNotes] = useState("");
   const [search, setSearch] = useState("");
 
-  const normalizeText = (text) =>
-    text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim();
-
-  const productMatchesSearch = (product, searchText) => {
-    const normalizedProduct = normalizeText(product);
-    const searchWords = normalizeText(searchText)
-      .split(/[^a-z0-9ñ]+/i)
-      .filter(Boolean);
-
-    return searchWords.every((searchWord) =>
-      normalizedProduct.includes(searchWord)
-    );
-  };
-
   const filteredDepartments = useMemo(() => {
     const cleanSearch = search.trim();
 
@@ -1189,7 +1123,7 @@ export default function App() {
       }))
       .filter((department) => department.products.length > 0);
 
-    if (cleanSearch.length < 2) {
+    if (!cleanSearch) {
       return visibleDepartments;
     }
 
@@ -1256,8 +1190,6 @@ export default function App() {
       lines.push(`- ${item.name}: ${parts.join(" / ")}`);
       lines.push("");
     });
-
-    lines.push("");
 
     if (notes.trim()) {
       lines.push(`Observaciones: ${notes.trim()}`, "");
